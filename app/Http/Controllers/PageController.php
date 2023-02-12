@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Http;
+use Illuminate\Support\Facades\Http;
 
 class PageController extends Controller
 {
     // function to get 5 quotes from rest api and return to index view
-    public function index()
+    public function quotes()
     {
         $quotes = [];
         for ($i = 0; $i < 5; $i++) {
-            $response = Http::get('https://api.kanye.rest');
+            $response = Http::post('https://api.kanye.rest');
             $quotes[] = $response->json()['quote'];
         }
         
-        return view('index', [
+        return view('quotes', [
             'quotes' => $quotes
         ]);
     }

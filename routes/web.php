@@ -15,11 +15,13 @@ use App\Http\Controllers\PageController;
 |
 */
 
-/*Route::get('/', function () {
+/**Route::get('/', function () {
     return view('welcome');
-});*/
+});**/
 
-Route::get('/', [PageController::class, 'index']);
+// Route to directs user to quotes page. Authentication is required to access.
+Route::get('/', [PageController::class, 'quotes']
+)->middleware(['auth', 'verified'])->name('quotes');;
 
 Route::get('/dashboard', function () {
     return view('dashboard');
