@@ -36,12 +36,10 @@
                 </div>
             @endif
 
-            @auth
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8 ml-2">
                 <h1>Kanye Quotes using Kanye.rest API</h1>
-                
+                <button class="btn btn-primary" id="refresh" onclick="refreshDiv();" !important>Refresh</button>
                 <div class="separator"></div>
-
                 <div class="bg-quotes" id="quotesResult">
                     @foreach($quotes as $key => $quote)
                     <p>
@@ -52,7 +50,13 @@
                     @endforeach
                 </div>
             </div>
-            @endauth
         </div>
+        <script src="http://code.jquery.com/jquery.min.js"></script>
+        <script type ="text/javascript">
+            function refreshDiv()
+            {
+                $('#quotesResult').load(location.href + " #quotesResult")
+            }
+        </script>
     </body>
 </html>
